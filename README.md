@@ -39,7 +39,6 @@ git clone https://gitee.com/pw-1/request-all.git
    	</script>
    ```
 
-   
 2. requestAll的使用
 
    ```vue
@@ -76,7 +75,7 @@ git clone https://gitee.com/pw-1/request-all.git
          ok:'',
        },
        mounted(){
-         this.requestAll(requests);//开启所有请求
+         this.requestAll(requests,this);//开启所有请求
        }
      }
    </script>
@@ -90,14 +89,15 @@ git clone https://gitee.com/pw-1/request-all.git
     {
              url:'',//必选 接口的路径
              method:'',//可选，默认get
-             data:{}, //可选，发送的数据
-             headers:{}, //单独设置header, 
+             data:{}, //可选，发送的数据 请求体中的数据
+             parmas:{},//可选，路径中的数据
+             headers:{}, //单独设置header, 针对传文件之类的特别请求
              targetData:'', //存放请求结果到的目标数据 vm 的 data 里的属性名
              delay:true,	 //是否延迟执行这个请求，设置之后在此对象绑定发送该请求的函数
              successHandler:(res)=>{},//成功请求后调用的函数，默认打印请求结果
              failHandler:(err)=>{},// 失败后调用的函数，末日打印 err
     }
    ```
-
+   
    
 

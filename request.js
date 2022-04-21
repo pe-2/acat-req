@@ -9,6 +9,7 @@ class AjaxOpt { //给交互配置赋予一些默认的属性值
             failHandler,
             delay,
             targetData,
+            parmas,
         } =
         opt;
 
@@ -25,6 +26,17 @@ class AjaxOpt { //给交互配置赋予一些默认的属性值
             },
             delay,
             targetData,
+        }
+        let parmaStr = '';
+        for (let i in parmas) {
+            parmaStr += `${i}=${parmas[i]}`
+            if (i !== parmas.length - 1) {
+                parmaStr += '&';
+            }
+        }
+        parmaStr = parmaStr.slice(0, parmaStr.length - 1);
+        if (parmas !== undefined) {
+            res.path += `?${parmaStr}`;
         }
         for (let i in res) {
             this[i] = res[i];
@@ -44,7 +56,7 @@ function ajax(option) { //主要来进行交互的函数
         method, //默认为get
         path,
         data,
-        headers
+        headers,
     } = option;
     return new Promise((res, rej) => {
         let xml = new XMLHttpRequest();
@@ -72,7 +84,6 @@ function ajax(option) { //主要来进行交互的函数
     })
 }
 
-
 //开始封装函数
 function requestAll(reqOpts, vueC) {
 
@@ -80,18 +91,36 @@ function requestAll(reqOpts, vueC) {
         val.headers = new MyHeaders(val.headers);
         return new AjaxOpt(val);
     })
+    console.log(reqOpts);
     let delayReq = reqOpts.filter((val) => {
         return val.delay !== undefined
     })
-    delayReq.forEach(element => {
-        let index = 0;
+    delayReq.forEach((element, j) => {
+        let index;
         for (let i in vueC.requests) {
-            if (vueC.requests[i] === element) {
+            if (i == j) {
                 index = i;
+                break;
             }
         }
         vueC.$set(vueC.requests, index, {
-            func() {
+            func(data, parmas) {
+                if (data) {
+                    element.data = data;
+                }
+                if (parmas) {
+                    let parmaStr = '';
+                    for (let i in parmas) {
+                        parmaStr += `${i}=${parmas[i]}`
+                        if (i !== parmas.length - 1) {
+                            parmaStr += '&';
+                        }
+                    }
+                    parmaStr = parmaStr.slice(0, parmaStr.length - 1);
+                    if (parmas !== undefined) {
+                        element.path += `?${parmaStr}`;
+                    }
+                }
                 let p = ajax(element);
                 if (element.targetData) {
                     p.then((res) => {
