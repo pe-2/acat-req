@@ -1,7 +1,8 @@
 {
   "name": "acat-req",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "A framework for centralized processing of requests",
+  "main": "/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --watch",

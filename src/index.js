@@ -1,5 +1,7 @@
 import CreateGoReq from "./createGoReq/createGoReq";
-export function acat_req(reqs, baseOpt) {
+export default function acatReq(reqs, baseOpt) {
     return new CreateGoReq(reqs, baseOpt);
 }
-window.acat_req = acat_req;
+
+window.acatReq = acatReq;
+

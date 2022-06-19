@@ -11,7 +11,7 @@
 
 <body>
     <script>
-        let req = acat_req([
+        let req = acatReq([
             {
                 url: 'apple',
                 name: 'apple',
@@ -33,31 +33,17 @@
                 method: 'post',
             }
         ], {
-            baseURL: 'http://127.0.0.1:8080',
+            baseURL: 'http://127.0.0.1:8000',
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-        console.log(req);
-        req.apple().then(() => {
-            let data = req.getData('apple');
+
+        req.sendReqs('apple', 'banana', 'apple', 'banana', 'apple', 'banana', 'apple', 'banana').then(resArr => {
+            console.log(resArr);
+        }).catch((errWithRes) => {
+            console.log(errWithRes);
         })
-        req.banana({
-            data: {
-                a: 1,
-            },
-            params: {
-                user: '123'
-            },
-        });
-        req.banana({
-            data: {
-                b: 1,
-            },
-            params: {
-                user: '123'
-            },
-        });
     </script>
 </body>
 
