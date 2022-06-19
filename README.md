@@ -41,7 +41,7 @@
       }
       
       return (
-        <div onClick>{apple}</div>
+        <div onClick={getApple}>{apple}</div>
       )
   }
  在点击该组件div时就会发送请求并且将响应数据挂在state上
