@@ -1,0 +1,27 @@
+{
+  "name": "request-center",
+  "version": "1.0.0",
+  "description": "A framework for centralized processing of requests",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch",
+    "build": "webpack --config ./webpack.build.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pe-2/request-all.git"
+  },
+  "author": "pe-2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pe-2/request-all/issues"
+  },
+  "homepage": "https://github.com/pe-2/request-all#readme",
+  "devDependencies": {
+    "axios": "^0.27.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.3",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
