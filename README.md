@@ -7,7 +7,7 @@
 ```
   npm i acat-req 
 
-  npm i axios //因为本插件时使用axios发送请求的所以也得下载它
+  npm i axios //因为本插件是使用axios发送请求的所以也得下载它
 ```
 ### 展示代码
 请求层 requests.js 所有请求的配置都在这里
