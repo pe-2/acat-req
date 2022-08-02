@@ -27,4 +27,6 @@ export default function mount(target, reqOpt) {
         })
     }
     target[`${name}_config`] = Object.assign(reqOpt, { reqTime: 0 });
+
+    //添加了一行新的注释
 }
